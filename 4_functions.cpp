@@ -56,29 +56,40 @@ void func3(Base& obj) {
 
 
 Base func1() {
-	// Base *obj = new Base();
-	// return *obj;
 	cout << "func1()\n";
 	Base obj;
 	return obj;
 }
 
-Base* func2() {
-	// Base obj;
-	// return &obj;
+Base func2() {
 	cout << "func2()\n";
+	Base *obj = new Base();
+	return *obj;
+}
+
+Base* func3() {
+	cout << "func3()\n";
 	Base* obj = new Base();
 	return obj;
 }
 
-Base& func3() {
-	// Base *obj = new Base();
-	// return *obj;
+Base* func4() {
 	cout << "func3()\n";
+	Base obj;
+	return &obj;
+}
+
+Base& func5() {
+	cout << "func5()\n";
 	Base obj;
 	return obj;
 }
 
+Base& func6() {
+	cout << "func6()\n";
+	Base *obj = new Base();
+	return *obj;
+}
 
 void functions() {
 
@@ -122,19 +133,35 @@ void functions() {
 	delete objBD;
 	delete objDD;
 
-	cout << endl;
+	cout << "\n|==============\n\n";
 
 	Base obj1;
-	Base obj2;
-	Base obj3;
 
 	cout << endl;
 
 	obj1 = func1();
 	cout << endl;
-	obj2 = func2();
+	obj1 = func2();
 	cout << endl;
-	obj3 = func3();
+	obj1 = func3();
+	cout << endl;
+	obj1 = func4();
+	cout << endl;
+	obj1 = func5();
+	cout << endl;
+	obj1 = func6();
 
 	cout << endl;
+
+	cout << "\n|=======5_ptrs=======\n\n";
+
+	unique_ptr<Base> unqObj(new Desc());
+	//auto unqObj = make_unique<Desc>;
+
+	cout << endl;
+
+	shared_ptr<Base> shrdObj(new Desc());
+	//auto shrdObj = make_shared<Desc>;
+
+	cout << "\n|==============\n\n";
 }
